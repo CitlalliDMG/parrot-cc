@@ -15,9 +15,9 @@ import * as yup from 'yup';
 const validationSchema = yup.object({
     email: yup
         .string()
-        .email('The Email you entered is not a valid format')
-        .required('Please enter Email Address!'),
-    password: yup.string().required('Please enter your password'),
+        .email('El correo electrónico no tiene un formato valido')
+        .required('Por favor, ingresa tu correo electrónico'),
+    password: yup.string().required('Por favor, ingresa tu contraseña'),
 });
 
 export default function LoginForm() {
