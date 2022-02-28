@@ -40,6 +40,7 @@ Welcome to my solution proposal for the Parrot challenge! In this repository you
 -   [x] Support for multiple screen sizes
 -   [x] Instructions for construction and deployment
 -   [ ] Test relevants parts of the application:
+    -   [x] Test store actions
 
 ### Built With
 
@@ -96,10 +97,14 @@ npm run start
 npm run build
 ```
 
-7. Run tests:
+7. Run tests with or without coverage:
 
 ```sh
 npm run test
+```
+
+```sh
+npm run test:coverage
 ```
 
 ### File structure
@@ -108,6 +113,7 @@ The project folder should contain the following files:
 
 ```text
 ./parrot-cc/
+├── coverage
 ├── node_modules
 ├── public
 │   ├── android-chrome-192x192.png

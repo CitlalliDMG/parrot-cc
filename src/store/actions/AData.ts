@@ -21,10 +21,10 @@ const getStoreSuccess = (payload: {}) => {
     }
 }
 
-const getStoreError = ({ error }: any) => {
+const getStoreError = (payload: {}) => {
     return {
         type: GET_STORE_ERROR,
-        payload: { error },
+        payload: payload,
     }
 }
 
@@ -42,10 +42,10 @@ const getProductsSuccess = (payload: {}) => {
     }
 }
 
-const getProductsError = ({ error }: any) => {
+const getProductsError = (payload: {}) => {
     return {
         type: GET_PRODUCTS_ERROR,
-        payload: { error },
+        payload: payload,
     }
 }
 
