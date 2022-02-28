@@ -24,16 +24,6 @@ export function* login({ payload }: any) {
     }
 }
 
-// export function* logout() {
-//     // yield fork(NProgress.start)
-//     cookies.remove('token')
-//     cookies.remove('expiration')
-//     navigate('/');
-//     yield call(actionsLogout.getLogoutSuccess)
-//     // yield fork(NProgress.done)
-// }
-
 export default function* loginSaga() {
     yield takeLatest(actionTypes.GET_LOGIN_REQUEST, login)
-    // yield takeLatest(actionTypes.GET_LOGOUT_REQUEST, logout)
 }

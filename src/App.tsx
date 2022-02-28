@@ -4,6 +4,7 @@ import { persistor } from './store';
 import LoginPage from './pages/LoginPage';
 import MenuPage from './pages/MenuPage';
 import NotFoundPage from './pages/NotFoundPage';
+import RequireAuth from './components/RequireAuth';
 
 function App() {
     return (
@@ -11,7 +12,14 @@ function App() {
             <Router>
                 <Routes>
                     <Route path="/" element={<LoginPage />} />
-                    <Route path="/menu" element={<MenuPage />} />
+                    <Route
+                        path="/menu"
+                        element={
+                            <RequireAuth redirectTo="/">
+                                <MenuPage />
+                            </RequireAuth>
+                        }
+                    />
                     <Route path="/*" element={<NotFoundPage />} />
                 </Routes>
             </Router>

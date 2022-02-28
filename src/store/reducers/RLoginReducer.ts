@@ -1,12 +1,11 @@
 import * as Types from '../actions/AActionTypes'
-import IReducer from '../../interfaces/IReducer'
 
 const INIT_STATE = {
     data: {},
     error: ''
 }
 
-const loginReducer = (state = INIT_STATE, action: IReducer) => {
+const loginReducer = (state = INIT_STATE, action: any) => {
     switch (action.type) {
         case Types.GET_LOGIN_REQUEST: {
             return {
