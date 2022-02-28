@@ -1,3 +1,8 @@
+import Layout from '../components/Layout';
 export default function MenuPage() {
-    return <div>MenuPage</div>;
+    return (
+        <Layout>
+            <p>Menu</p>
+        </Layout>
+    );
 }

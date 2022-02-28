@@ -25,6 +25,20 @@ const loginReducer = (state = INIT_STATE, action: IReducer) => {
                 error: action.payload
             }
         }
+        case Types.GET_LOGOUT_REQUEST: {
+            return {
+                ...state
+            }
+        }
+        case Types.GET_LOGOUT_SUCCESS: {
+            return INIT_STATE
+        }
+        case Types.GET_LOGOUT_ERROR: {
+            return {
+                ...state,
+                error: action.payload
+            }
+        }
         default:
             return state
     }

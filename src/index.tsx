@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import configureStore from './store';
+import store from './store';
 
 const theme = createTheme({
     palette: {
@@ -22,8 +22,6 @@ const theme = createTheme({
         },
     },
 });
-
-const store = configureStore({});
 
 ReactDOM.render(
     <React.StrictMode>

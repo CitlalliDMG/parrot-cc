@@ -1,4 +1,4 @@
-import { 
+import {
     GET_LOGIN_REQUEST,
     GET_LOGIN_SUCCESS,
     GET_LOGIN_ERROR,
@@ -18,10 +18,10 @@ const getLoginSuccess = (payload: {}) => {
     }
 }
 
-const getLoginError = ({error}: any) => {
+const getLoginError = ({ error }: any) => {
     return {
         type: GET_LOGIN_ERROR,
-        payload: {error},
+        payload: { error },
     }
 }
 
@@ -31,6 +31,7 @@ export {
     getLoginError
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
     getLoginRequest,
     getLoginSuccess,

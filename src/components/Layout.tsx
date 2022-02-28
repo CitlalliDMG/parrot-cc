@@ -1,4 +1,6 @@
 import { useState, ChangeEvent, MouseEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {
     AppBar,
     Toolbar,
@@ -12,12 +14,15 @@ import {
     Grid,
 } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
+import * as actionsLogout from '../store/actions/ALogout';
 
 type Props = {
     children: JSX.Element;
 };
 
 export default function Layout({ children }: Props) {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [auth, setAuth] = useState(true);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -31,6 +36,10 @@ export default function Layout({ children }: Props) {
 
     const handleClose = () => {
         setAnchorEl(null);
+    };
+
+    const handleLogout = () => {
+        dispatch(actionsLogout.getLogoutRequest({ navigate }));
     };
 
     return (
@@ -92,7 +101,7 @@ export default function Layout({ children }: Props) {
                                     <MenuItem onClick={handleClose}>
                                         Mi perfil
                                     </MenuItem>
-                                    <MenuItem onClick={handleClose}>
+                                    <MenuItem onClick={handleLogout}>
                                         Cerrar sesión
                                     </MenuItem>
                                 </Menu>
