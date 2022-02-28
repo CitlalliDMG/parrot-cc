@@ -5,6 +5,7 @@ import jwt_decode from 'jwt-decode';
 import * as actionTypes from '../actions/AActionTypes';
 import * as actionsLogin from '../actions/ALogin';
 import * as actionsError from '../actions/AError';
+import * as actionsData from '../actions/AData';
 import { fetchToken } from '../../services/login';
 import { IToken } from '../../interfaces/IToken';
 
@@ -18,7 +19,7 @@ export function* login({ payload }: any) {
         const actualDate = new Date()
         if (expirationDate > actualDate) {
             yield put(actionsLogin.getLoginSuccess(data))
-            navigate('/menu');
+            yield put(actionsData.getStoreRequest({ navigate }));
         }
     } catch (error) {
         yield put(actionsError.showError({}))

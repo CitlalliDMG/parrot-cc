@@ -1,46 +1,216 @@
-# Getting Started with Create React App
+<!-- PRESENTATION -->
+<br />
+<p align="center">
+  <h1 align="center">Parrot - Coding Challenge</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <p align="center">
+    Solution proposal for the Parrot Frontend React Challenge
+  </p>
+</p>
 
-## Available Scripts
+<!-- TABLE OF CONTENTS -->
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+-   [About the Project](#about-the-project)
+    -   [Technical Specifications](#technical-specifications)
+    -   [Built With](#built-with)
+-   [Getting Started](#getting-started)
+    -   [Prerequisites](#prerequisites)
+    -   [Installation](#installation)
+    -   [File structure](#file-structure)
+-   [Usage](#usage)
+-   [Roadmap](#roadmap)
+-   [Contributing](#contributing)
+-   [License](#license)
+-   [Contact](#contact)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!-- ABOUT THE PROJECT -->
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## About The Project
 
-### `npm test`
+Welcome to my solution proposal for the Parrot challenge! In this repository you will find my solution to the coding challenge of creating a web application that allows the user, see the products of certain store after login with their credentials.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Technical Requirements
 
-### `npm run build`
+-   [x] Using the React framework
+-   [x] Use of Redux or similar technology
+-   [ ] Use of Monorepository (Lerna or Nx)
+-   [ ] Support for static and server-side deployment (Node.js)
+-   [x] Support for multiple screen sizes
+-   [x] Instructions for construction and deployment
+-   [ ] Test relevants parts of the application:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Built With
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+For the development of this project, the main technologies I used were:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-   [React](https://reactjs.org/)
+-   [Typescript](https://www.typescriptlang.org/)
+-   [Redux](https://redux.js.org/)
+-   [Redux-Saga](https://redux-saga.js.org/)
+-   [Formik](https://formik.org/)
+-   [Yup](https://www.npmjs.com/package/yup)
+-   [React-Testing-Library](https://testing-library.com/docs/react-testing-library/intro/)
+-   [Jest](https://jestjs.io/)
+-   [Redux-Saga-Test-Plan](http://redux-saga-test-plan.jeremyfairbank.com/)
+-   [Material-UI](https://mui.com/)
 
-### `npm run eject`
+<!-- GETTING STARTED -->
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Getting Started
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To download and run the project, please follow these steps:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Prerequisites
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Before running this project, make sure you have installed a [Node](https://nodejs.org/) version higher than 16.14.0
 
-## Learn More
+### Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Clone the repo
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+git clone https://github.com/CitlalliDMG/bitso-frontend-challenge.git
+```
+
+2. Install dependencies
+
+```sh
+npm install
+```
+
+3. Run the development server:
+
+```sh
+npm run start
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+5. Log in using the credentials that come in the coding challenge PDF
+
+6. Create the application build
+
+```sh
+npm run build
+```
+
+7. Run tests:
+
+```sh
+npm run test
+```
+
+### File structure
+
+The project folder should contain the following files:
+
+```text
+./parrot-cc/
+├── node_modules
+├── public
+│   ├── android-chrome-192x192.png
+│   ├── android-chrome-512x512.png
+│   ├── apple-touch-icon.png
+│   ├── favicon-16x16.png
+│   ├── favicon-32x32.png
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── manifest.json
+│   ├── robots.txt
+│   ├── safari-pinned-tab.svg
+├── src
+│   ├── components
+│      ├── Layout.tsx
+│      ├── LoginForm.tsx
+│      ├── RequireAuth.tsx
+│      ├── TabMenu.tsx
+│   ├── interfaces
+│      ├── IResponseData.ts
+│      ├── IResponseGenerator.ts
+│      ├── IToken.ts
+│   ├── pages
+│      ├── LoginPage.tsx
+│      ├── MenuPage.tsx
+│      ├── NotFoundPage.tsx
+│   ├── services
+│      ├── constants.ts
+│      ├── data.ts
+│      ├── endpoints.ts
+│      ├── login.ts
+│   ├── store
+│      ├── actions
+│         ├── AActionTypes.ts
+│         ├── AData.ts
+│         ├── AError.ts
+│         ├── ALogin.ts
+│         ├── ALogout.ts
+│      ├── reducers
+│         ├── index.ts
+│         ├── RData.ts
+│         ├── RError.ts
+│         ├── RLogin.ts
+│      ├── sagas
+│         ├── index.ts
+│         ├── SData.ts
+│         ├── SLogin.ts
+│         ├── SLogout.ts
+│      ├── index.ts
+│   ├── App.test.tsx
+│   ├── App.tsx
+│   ├── index.tsx
+│   ├── parrot-logo.svg
+│   ├── react-app-env.d.ts
+│   ├── reportWebVitals.ts
+│   ├── setupTests.ts
+├── .editorconfig
+├── .gitignore
+├── package-lock.json
+├── package.json
+├── README.md
+└── tsconfig.json
+
+```
+
+<!-- USAGE EXAMPLES -->
+
+## Usage
+
+Once you have the project running on the test server, or if you are viewing it in the demo url, you can find the following interface.
+
+![Create your own island Mobile Demo](create-your-own-island-mobile-demo.png)
+
+By default, the world is generated with a 4x4 grid. If you want to change the size of the world, use the inputs to enter the number of rows and columns and click "Create World"
+
+To create an land cell, click on any of the cells on the grid. To remove it, click on it again.
+
+![Create your own island Demo](create-your-own-island-demo.png)
+
+If you have multiple land cells and want to remove them all, click "Remove all the land".
+
+In the panel next to the inputs to create the world, you can find a summary of the cells you have, and how many of them are from land and ocean.
+
+<!-- CONTRIBUTING -->
+
+## Contributing
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/yourInitials_AmazingFeature`)
+3. Commit your Changes (`git commit -m '[type] Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the MIT License.
+
+<!-- CONTACT -->
+
+## Contact
+
+Citlalli Del Moral - [portfolio](https://citlallidmg.github.io/) - citlallidmg@gmail.com
+
+Project Link: [https://github.com/CitlalliDMG/parrot-cc](https://github.com/CitlalliDMG/parrot-cc)

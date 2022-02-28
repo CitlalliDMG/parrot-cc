@@ -7,9 +7,10 @@ import {
     GET_PRODUCTS_ERROR
 } from './AActionTypes'
 
-const getStoreRequest = () => {
+const getStoreRequest = (payload: {}) => {
     return {
         type: GET_STORE_REQUEST,
+        payload: payload
     }
 }
 

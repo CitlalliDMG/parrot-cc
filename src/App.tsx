@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { persistor } from './store';
-import LoginPage from './pages/LoginPage';
-import MenuPage from './pages/MenuPage';
-import NotFoundPage from './pages/NotFoundPage';
-import RequireAuth from './components/RequireAuth';
 import {
     useMediaQuery,
     Button,
@@ -17,16 +12,24 @@ import {
     DialogContentText,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { persistor } from './store';
 import { RootState } from './store/reducers';
+import LoginPage from './pages/LoginPage';
+import MenuPage from './pages/MenuPage';
+import NotFoundPage from './pages/NotFoundPage';
+import RequireAuth from './components/RequireAuth';
+import * as actionsError from './store/actions/AError';
 
 function App() {
-    const error = useSelector((state: RootState) => state.login.error);
+    const dispatch = useDispatch();
+    const error = useSelector((state: RootState) => state.error);
     const [open, setOpen] = useState(false);
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
     const handleClose = () => {
         setOpen(false);
+        dispatch(actionsError.hideError());
     };
 
     useEffect(() => {

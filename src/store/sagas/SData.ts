@@ -9,12 +9,13 @@ import { IResponseStoresData } from '../../interfaces/IResponseData';
 
 export const getToken = (state: any) => state.login.data.access;
 
-export function* fetchStore() {
+export function* fetchStore({ payload }: any) {
+    const { navigate } = payload
     const token: string = yield select(getToken);
     try {
         const data: IResponseStoresData = yield call(fetchStoreData, { token })
         yield put(actionsData.getStoreSuccess(data))
-        yield put(actionsData.getProductsRequest(data.result.stores[0].uuid))
+        yield put(actionsData.getProductsRequest({ storeId: data.result.stores[0].uuid, navigate }))
         // TODO: Dispatch products request for each store
         // data.result.stores.map(store => {
         //     yield put(actionsData.getProductsRequest(store.uuid))
@@ -25,14 +26,17 @@ export function* fetchStore() {
 }
 
 export function* fetchProducts({ payload }: any) {
+    const { storeId, navigate } = payload
+
     const token: string = yield select(getToken);
     const payloadData = {
         token,
-        storeId: payload
+        storeId
     }
     try {
         const data: {} = yield call(fetchProductsData, payloadData)
         yield put(actionsData.getProductsSuccess(data))
+        navigate('/menu')
     } catch (error) {
         yield put(actionsError.showError({}))
     }

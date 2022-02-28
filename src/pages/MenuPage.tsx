@@ -1,23 +1,11 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-    Grid,
-    Typography,
-    Button,
-    Box,
-    Card,
-    Paper,
-    Tabs,
-    Tab,
-} from '@mui/material';
+import { useSelector } from 'react-redux';
+import { Grid, Typography, Card } from '@mui/material';
 import StoreIcon from '@mui/icons-material/Store';
 import Layout from '../components/Layout';
 import TabMenu from '../components/TabMenu';
-import * as actionsData from '../store/actions/AData';
 import { RootState } from '../store/reducers';
 
 export default function MenuPage() {
-    const dispatch = useDispatch();
     let store = useSelector(
         (state: RootState) => state.data.store.result.stores[0]
     );
@@ -34,11 +22,6 @@ export default function MenuPage() {
         }
         return null;
     });
-
-    useEffect(() => {
-        dispatch(actionsData.getStoreRequest());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     return (
         <Layout>
