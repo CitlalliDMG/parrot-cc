@@ -1,9 +1,10 @@
 import {
     call, put, takeLatest
-} from 'redux-saga/effects'
+} from 'redux-saga/effects';
 import jwt_decode from 'jwt-decode';
-import * as actionTypes from '../actions/AActionTypes'
-import * as actionsLogin from '../actions/ALogin'
+import * as actionTypes from '../actions/AActionTypes';
+import * as actionsLogin from '../actions/ALogin';
+import * as actionsError from '../actions/AError';
 import { fetchToken } from '../../services/login';
 import { IToken } from '../../interfaces/IToken';
 
@@ -20,7 +21,7 @@ export function* login({ payload }: any) {
             navigate('/menu');
         }
     } catch (error) {
-        yield put(actionsLogin.getLoginError({ status: true }))
+        yield put(actionsError.showError({}))
     }
 }
 

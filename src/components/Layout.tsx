@@ -9,9 +9,11 @@ import {
     MenuItem,
     Menu,
     Grid,
+    Box,
 } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import * as actionsLogout from '../store/actions/ALogout';
+import { ReactComponent as ParrotLogo } from '../parrot-logo.svg';
 
 type Props = {
     children: JSX.Element;
@@ -44,13 +46,22 @@ export default function Layout({ children }: Props) {
             <Grid item>
                 <AppBar position="static" color="secondary">
                     <Toolbar>
-                        <Typography
-                            variant="h6"
+                        <Box
                             component="div"
-                            sx={{ flexGrow: 1 }}
+                            sx={{
+                                textAlign: {
+                                    xs: 'center',
+                                    md: 'left',
+                                },
+                                flexGrow: 1,
+                            }}
                         >
-                            ParrotMenu
-                        </Typography>
+                            <ParrotLogo
+                                height={90}
+                                width={100}
+                                fill={'#ffffff'}
+                            />
+                        </Box>
                         <div>
                             <IconButton
                                 size="large"

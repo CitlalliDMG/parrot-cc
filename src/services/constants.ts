@@ -1,9 +1,9 @@
 const CONSTANTS = {
-    BASE_URL: 'http://demo4949022.mockable.io'
+    BASE_URL: 'http://api-staging.parrot.rest'
 }
 
 const HEADER_CONFIG = (token: string) => ({
-    Authorization: `Bearer ${token}`,
+    'Authorization': `Bearer ${token}`,
     'Content-Type': 'application/json',
 })
 

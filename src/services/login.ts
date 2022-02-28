@@ -8,6 +8,9 @@ type fetchTokenProps = {
 async function fetchToken({ email, password }: fetchTokenProps) {
     const response = await fetch(`${CONSTANTS.BASE_URL}${ENDPOINTS.getToken}`, {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
             username: email,
             password
