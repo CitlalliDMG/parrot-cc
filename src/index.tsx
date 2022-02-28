@@ -1,34 +1,40 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import configureStore from './store';
 
 const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#0d0d0d",
-      light: "#a3a3af",
-      dark: "#090909",
+    palette: {
+        primary: {
+            main: '#0d0d0d',
+            light: '#a3a3af',
+            dark: '#090909',
+        },
+        secondary: {
+            main: '#f04e49',
+            light: '#f46e70',
+            dark: '#a93335',
+        },
     },
-    secondary: {
-      main: "#f04e49",
-      light: "#f46e70",
-      dark: "#a93335",
-    },
-  },
 });
 
+const store = configureStore({});
+
 ReactDOM.render(
-  <React.StrictMode>
-    <CssBaseline />
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+    <React.StrictMode>
+        <Provider store={store}>
+            <CssBaseline />
+            <ThemeProvider theme={theme}>
+                <App />
+            </ThemeProvider>
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

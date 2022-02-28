@@ -11,6 +11,9 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import * as actionsLogin from '../store/actions/ALogin';
 
 const validationSchema = yup.object({
     email: yup
@@ -21,6 +24,8 @@ const validationSchema = yup.object({
 });
 
 export default function LoginForm() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
 
     const handleClickShowPassword = () => {
@@ -50,7 +55,11 @@ export default function LoginForm() {
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(data) => {
-                    console.log(data);
+                    const payload = {
+                        ...data,
+                        navigate,
+                    };
+                    dispatch(actionsLogin.getLoginRequest(payload));
                 }}
             >
                 {({
