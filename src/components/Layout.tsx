@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, MouseEvent } from 'react';
+import { useState, MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
@@ -6,9 +6,6 @@ import {
     Toolbar,
     Typography,
     IconButton,
-    Switch,
-    FormControlLabel,
-    FormGroup,
     MenuItem,
     Menu,
     Grid,
@@ -23,12 +20,7 @@ type Props = {
 export default function Layout({ children }: Props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [auth, setAuth] = useState(true);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setAuth(event.target.checked);
-    };
 
     const handleMenu = (event: MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -50,18 +42,6 @@ export default function Layout({ children }: Props) {
             style={{ minHeight: '100vh', width: '100%' }}
         >
             <Grid item>
-                <FormGroup>
-                    <FormControlLabel
-                        control={
-                            <Switch
-                                checked={auth}
-                                onChange={handleChange}
-                                aria-label="login switch"
-                            />
-                        }
-                        label={auth ? 'Logout' : 'Login'}
-                    />
-                </FormGroup>
                 <AppBar position="static" color="secondary">
                     <Toolbar>
                         <Typography
@@ -71,42 +51,40 @@ export default function Layout({ children }: Props) {
                         >
                             ParrotMenu
                         </Typography>
-                        {auth && (
-                            <div>
-                                <IconButton
-                                    size="large"
-                                    aria-label="account of current user"
-                                    aria-controls="menu-appbar"
-                                    aria-haspopup="true"
-                                    onClick={handleMenu}
-                                    color="inherit"
-                                >
-                                    <AccountCircle />
-                                </IconButton>
-                                <Menu
-                                    id="menu-appbar"
-                                    anchorEl={anchorEl}
-                                    anchorOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'right',
-                                    }}
-                                    keepMounted
-                                    transformOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'right',
-                                    }}
-                                    open={Boolean(anchorEl)}
-                                    onClose={handleClose}
-                                >
-                                    <MenuItem onClick={handleClose}>
-                                        Mi perfil
-                                    </MenuItem>
-                                    <MenuItem onClick={handleLogout}>
-                                        Cerrar sesión
-                                    </MenuItem>
-                                </Menu>
-                            </div>
-                        )}
+                        <div>
+                            <IconButton
+                                size="large"
+                                aria-label="account of current user"
+                                aria-controls="menu-appbar"
+                                aria-haspopup="true"
+                                onClick={handleMenu}
+                                color="inherit"
+                            >
+                                <AccountCircle />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorEl}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                open={Boolean(anchorEl)}
+                                onClose={handleClose}
+                            >
+                                <MenuItem onClick={handleClose}>
+                                    Mi perfil
+                                </MenuItem>
+                                <MenuItem onClick={handleLogout}>
+                                    Cerrar sesión
+                                </MenuItem>
+                            </Menu>
+                        </div>
                     </Toolbar>
                 </AppBar>
             </Grid>

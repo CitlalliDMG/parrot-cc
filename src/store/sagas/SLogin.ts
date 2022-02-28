@@ -20,7 +20,7 @@ export function* login({ payload }: any) {
             navigate('/menu');
         }
     } catch (error) {
-        yield put(actionsLogin.getLoginError(error))
+        yield put(actionsLogin.getLoginError({ status: true }))
     }
 }
 

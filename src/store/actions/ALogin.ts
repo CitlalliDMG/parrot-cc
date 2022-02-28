@@ -18,10 +18,10 @@ const getLoginSuccess = (payload: {}) => {
     }
 }
 
-const getLoginError = ({ error }: any) => {
+const getLoginError = (payload: {}) => {
     return {
         type: GET_LOGIN_ERROR,
-        payload: { error },
+        payload: payload,
     }
 }
 

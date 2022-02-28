@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage/session'
+import storage from 'redux-persist/lib/storage'
 import loginReducer from './RLoginReducer';
 
 const persistConfig = {

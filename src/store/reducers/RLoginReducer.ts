@@ -2,7 +2,7 @@ import * as Types from '../actions/AActionTypes'
 
 const INIT_STATE = {
     data: {},
-    error: ''
+    error: {}
 }
 
 const loginReducer = (state = INIT_STATE, action: any) => {
