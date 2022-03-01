@@ -14,14 +14,16 @@ import {
 import { useTheme } from '@mui/material/styles';
 import { persistor } from './store';
 import { RootState } from './store/reducers';
+import * as actionsError from './store/actions/AError';
 import LoginPage from './pages/LoginPage';
 import MenuPage from './pages/MenuPage';
 import NotFoundPage from './pages/NotFoundPage';
 import RequireAuth from './components/RequireAuth';
-import * as actionsError from './store/actions/AError';
+import Loader from './components/Loader';
 
 function App() {
     const dispatch = useDispatch();
+    const loading = useSelector((state: RootState) => state.loader);
     const error = useSelector((state: RootState) => state.error);
     const [open, setOpen] = useState(false);
     const theme = useTheme();
@@ -74,6 +76,7 @@ function App() {
                     </DialogActions>
                 </Dialog>
             </div>
+            {loading.status && <Loader title={loading.title} />}
         </PersistGate>
     );
 }

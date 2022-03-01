@@ -20,8 +20,8 @@ export default function MenuPage() {
     );
 
     useEffect(() => {
-        console.log('ahora', store.uuid);
         dispatch(actionsData.getStoreRequest({ navigate, refresh: true }));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const categories: Array<string> = [];
