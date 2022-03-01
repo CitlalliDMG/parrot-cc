@@ -35,12 +35,42 @@ Welcome to my solution proposal for the Parrot challenge! In this repository you
 
 -   [x] Using the React framework
 -   [x] Use of Redux or similar technology
--   [ ] Use of Monorepository (Lerna or Nx)
--   [ ] Support for static and server-side deployment (Node.js)
 -   [x] Support for multiple screen sizes
 -   [x] Instructions for construction and deployment
--   [ ] Test relevants parts of the application:
+-   [x] Test relevants parts of the application:
     -   [x] Test store actions
+    -   [x] Test store reducers
+    -   [ ] Test store sagas
+    -   [ ] Test pages
+    -   [ ] Test components
+
+Login Screen
+
+-   [x] Login by username and password
+-   [x] Visual clues in case of any errors
+-   [x] Visual clues in case of any errors
+-   [x] Visual clues in case of any errors
+-   [x] Visual clues when information is being sent to the server.
+-   [x] If the user authenticated correctly, this screen will be skipped in future sessions.
+
+Menu Edition Screen
+
+-   [x] List with the categories of a menu.
+-   [x] Each element (Category) will have to show:
+    -   [x] Name
+    -   [ ] Number of elements it contains.
+    -   [x] The user will have the option to expand to show a sub-list with the sub-items it contains.
+-   [x] Each sub-element (Product) will have to show at least:
+    -   [x] Name
+    -   [x] Image
+    -   [x] Price
+    -   [x] Status (Available / Not Available)
+    -   [x] Indentation to differentiate it from its father.
+    -   [x] It can be enabled / disabled, this will modify its status on the server and its visual appearance.
+-   [x] The related web services will be protected and can only be used by sending the token provided at login.
+-   [ ] A token expires after 25 minutes. It can auto-refresh.
+-   [x] An expired token is deleted after 30 minutes. You have to log in again to get a new one.
+-   [ ] If an item changes status in the backoffice, this should be reflected in real time on the site.
 
 ### Built With
 
@@ -183,19 +213,11 @@ The project folder should contain the following files:
 
 ## Usage
 
-Once you have the project running on the test server, or if you are viewing it in the demo url, you can find the following interface.
+Once you have the project running on the test server, you will see a login interface.
 
-![Create your own island Mobile Demo](create-your-own-island-mobile-demo.png)
+Log in using the credentials available in the PDF of the coding challenge, and you will be redirected to the menu edition page.
 
-By default, the world is generated with a 4x4 grid. If you want to change the size of the world, use the inputs to enter the number of rows and columns and click "Create World"
-
-To create an land cell, click on any of the cells on the grid. To remove it, click on it again.
-
-![Create your own island Demo](create-your-own-island-demo.png)
-
-If you have multiple land cells and want to remove them all, click "Remove all the land".
-
-In the panel next to the inputs to create the world, you can find a summary of the cells you have, and how many of them are from land and ocean.
+Explore different categories and interact with the products, and when you are ready, use the option in the user icon to log out.
 
 <!-- CONTRIBUTING -->
 
