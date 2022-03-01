@@ -41,8 +41,8 @@ Welcome to my solution proposal for the Parrot challenge! In this repository you
     -   [x] Test store actions
     -   [x] Test store reducers
     -   [ ] Test store sagas
-    -   [ ] Test pages
-    -   [ ] Test components
+    -   [x] Test pages
+    -   [x] Test components
 
 Login Screen
 
