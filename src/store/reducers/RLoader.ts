@@ -1,13 +1,5 @@
 import * as Types from '../actions/AActionTypes';
 
-interface IState {
-    type: string;
-    payload: {
-        status: boolean;
-        title: string;
-    }
-}
-
 const INIT_STATE = {
     status: false,
     title: '',
@@ -16,7 +8,7 @@ const INIT_STATE = {
     }
 }
 
-const loaderReducer = (state = INIT_STATE, action: IState) => {
+const loaderReducer = (state = INIT_STATE, action: any) => {
     switch (action.type) {
         case Types.SHOW_LOADER: {
             return {
