@@ -1,4 +1,5 @@
 import { useState, ChangeEvent } from 'react';
+import { useDispatch } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import {
     Typography,
@@ -13,6 +14,7 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import * as actionsData from '../store/actions/AData';
 
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -30,6 +32,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 export default function ItemCard({ product }: any) {
+    const dispatch = useDispatch();
     const [expanded, setExpanded] = useState(false);
     const [checked, setChecked] = useState(
         product.availability === 'AVAILABLE' ? true : false
@@ -40,7 +43,13 @@ export default function ItemCard({ product }: any) {
     };
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setChecked(event.target.checked);
+        // setChecked(event.target.checked);
+        const payload = {
+            productId: product.uuid,
+            availability: event.target.checked,
+            setChecked,
+        };
+        dispatch(actionsData.updateProductRequest(payload));
     };
 
     return (

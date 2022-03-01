@@ -5,7 +5,7 @@ import * as actionTypes from '../actions/AActionTypes';
 import * as actionsData from '../actions/AData';
 import * as actionsError from '../actions/AError';
 import * as actionsLoader from '../actions/ALoader';
-import { fetchStoreData, fetchProductsData } from '../../services/data';
+import { fetchStoreData, fetchProductsData, fetchUpdateProductData } from '../../services/data';
 import { IResponseStoresData } from '../../interfaces/IResponseData';
 
 export const getToken = (state: any) => state.login.data.access;
@@ -49,7 +49,28 @@ export function* fetchProducts({ payload }: any) {
     }
 }
 
+export function* fetchUpdateProduct({ payload }: any) {
+    yield put(actionsLoader.showLoader('Actualizando producto'));
+    const { productId, availability, setChecked } = payload
+    const token: string = yield select(getToken);
+    const payloadData = {
+        token,
+        productId,
+        availability
+    }
+    try {
+        const data: {} = yield call(fetchUpdateProductData, payloadData)
+        setChecked(availability);
+        yield put(actionsData.updateProductSuccess(data))
+        yield put(actionsLoader.hideLoader());
+    } catch (error) {
+        yield put(actionsLoader.hideLoader());
+        yield put(actionsError.showError({}))
+    }
+}
+
 export default function* dataSaga() {
     yield takeLatest(actionTypes.GET_STORE_REQUEST, fetchStore);
     yield takeEvery(actionTypes.GET_PRODUCTS_REQUEST, fetchProducts);
+    yield takeEvery(actionTypes.UPDATE_PRODUCT_REQUEST, fetchUpdateProduct);
 }

@@ -55,4 +55,31 @@ describe('Data Actions Test', () => {
         };
         expect(actionsData.getProductsError(payload)).toEqual(expectedAction)
     });
+
+    it('should create an action to updateProductRequest', () => {
+        const payload = 'data';
+        const expectedAction = {
+            type: actionsTypes.UPDATE_PRODUCT_REQUEST,
+            payload,
+        };
+        expect(actionsData.updateProductRequest(payload)).toEqual(expectedAction)
+    });
+
+    it('should create an action to updateProductSuccess', () => {
+        const payload = 'data';
+        const expectedAction = {
+            type: actionsTypes.UPDATE_PRODUCT_SUCCESS,
+            payload,
+        };
+        expect(actionsData.updateProductSuccess(payload)).toEqual(expectedAction)
+    });
+
+    it('should create an action to updateProductError', () => {
+        const payload = 'data';
+        const expectedAction = {
+            type: actionsTypes.UPDATE_PRODUCT_ERROR,
+            payload,
+        };
+        expect(actionsData.updateProductError(payload)).toEqual(expectedAction)
+    });
 })

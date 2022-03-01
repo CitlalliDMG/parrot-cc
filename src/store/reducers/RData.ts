@@ -42,6 +42,22 @@ const dataReducer = (state = INIT_STATE, action: any) => {
                 error: action.payload
             }
         }
+        case Types.UPDATE_PRODUCT_REQUEST: {
+            return {
+                ...state
+            }
+        }
+        case Types.UPDATE_PRODUCT_SUCCESS: {
+            return {
+                ...state,
+            }
+        }
+        case Types.UPDATE_PRODUCT_ERROR: {
+            return {
+                ...state,
+                error: action.payload
+            }
+        }
         default:
             return state
     }

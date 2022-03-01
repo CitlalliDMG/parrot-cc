@@ -4,7 +4,10 @@ import {
     GET_STORE_ERROR,
     GET_PRODUCTS_REQUEST,
     GET_PRODUCTS_SUCCESS,
-    GET_PRODUCTS_ERROR
+    GET_PRODUCTS_ERROR,
+    UPDATE_PRODUCT_REQUEST,
+    UPDATE_PRODUCT_SUCCESS,
+    UPDATE_PRODUCT_ERROR
 } from './AActionTypes'
 
 const getStoreRequest = (payload: {}) => {
@@ -49,13 +52,37 @@ const getProductsError = (payload: {}) => {
     }
 }
 
+const updateProductRequest = (payload: {}) => {
+    return {
+        type: UPDATE_PRODUCT_REQUEST,
+        payload: payload,
+    }
+}
+
+const updateProductSuccess = (payload: {}) => {
+    return {
+        type: UPDATE_PRODUCT_SUCCESS,
+        payload: payload,
+    }
+}
+
+const updateProductError = (payload: {}) => {
+    return {
+        type: UPDATE_PRODUCT_ERROR,
+        payload: payload,
+    }
+}
+
 export {
     getStoreRequest,
     getStoreSuccess,
     getStoreError,
     getProductsRequest,
     getProductsSuccess,
-    getProductsError
+    getProductsError,
+    updateProductRequest,
+    updateProductSuccess,
+    updateProductError
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -65,5 +92,8 @@ export default {
     getStoreError,
     getProductsRequest,
     getProductsSuccess,
-    getProductsError
+    getProductsError,
+    updateProductRequest,
+    updateProductSuccess,
+    updateProductError
 }

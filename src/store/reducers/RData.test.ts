@@ -83,4 +83,35 @@ describe('Data reducer test', () => {
 
         expect(dataReducer(undefined, action)).toEqual(expectedState);
     })
+
+    it('Should return the initial state for updateProductequest', () => {
+        const action = {
+            type: actionTypes.UPDATE_PRODUCT_REQUEST,
+            payload: 'data'
+        }
+        expect(dataReducer(undefined, action)).toEqual(init_state);
+    })
+
+    it('Should return the expected state for updateProductSuccess', () => {
+        const action = {
+            type: actionTypes.UPDATE_PRODUCT_SUCCESS,
+            payload: 'data'
+        }
+
+        expect(dataReducer(undefined, action)).toEqual(init_state);
+    })
+
+    it('Should return the expected state for updateProductError', () => {
+        const action = {
+            type: actionTypes.UPDATE_PRODUCT_ERROR,
+            payload: 'data'
+        }
+
+        const expectedState = {
+            ...init_state,
+            error: action.payload
+        }
+
+        expect(dataReducer(undefined, action)).toEqual(expectedState);
+    })
 })

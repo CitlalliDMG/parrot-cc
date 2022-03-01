@@ -30,4 +30,25 @@ async function fetchProductsData(payload: fetchProductsProps) {
     return data
 }
 
-export { fetchStoreData, fetchProductsData }
+type fetchUpdateProductProps = {
+    token: string;
+    productId: string,
+    availability: boolean
+}
+
+async function fetchUpdateProductData(payload: fetchUpdateProductProps) {
+    const { token, productId, availability } = payload
+    const URL = `${CONSTANTS.BASE_URL}${ENDPOINTS.getProducts}/${productId}${ENDPOINTS.updateProduct}`
+    const isAvailable = availability ? 'AVAILABLE' : 'UNAVAILABLE';
+    const response = await fetch(URL, {
+        method: 'PUT',
+        headers: HEADER_CONFIG(token),
+        body: JSON.stringify({
+            availability: isAvailable,
+        })
+    })
+    const data: {} = await response.json()
+    return data
+}
+
+export { fetchStoreData, fetchProductsData, fetchUpdateProductData }
