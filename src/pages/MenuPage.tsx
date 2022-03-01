@@ -1,17 +1,28 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Grid, Typography, Card } from '@mui/material';
 import StoreIcon from '@mui/icons-material/Store';
 import Layout from '../components/Layout';
 import TabMenu from '../components/TabMenu';
 import { RootState } from '../store/reducers';
+import * as actionsData from '../store/actions/AData';
 
 export default function MenuPage() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     let store = useSelector(
         (state: RootState) => state.data.store.result.stores[0]
     );
     let products = useSelector(
         (state: RootState) => state.data.products.results
     );
+
+    useEffect(() => {
+        console.log('ahora', store.uuid);
+        dispatch(actionsData.getStoreRequest({ navigate, refresh: true }));
+    }, []);
 
     const categories: Array<string> = [];
 
@@ -39,6 +50,7 @@ export default function MenuPage() {
                             direction: 'row',
                             padding: '2rem',
                         }}
+                        square
                     >
                         <StoreIcon
                             fontSize="large"

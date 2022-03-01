@@ -1,5 +1,6 @@
 import { ReactNode, useState, SyntheticEvent } from 'react';
-import { Tabs, Tab, Typography, Box, Card, Grid } from '@mui/material';
+import { Tabs, Tab, Box, Grid } from '@mui/material';
+import ItemCard from './ItemCard';
 
 interface TabPanelProps {
     children?: ReactNode;
@@ -11,7 +12,6 @@ interface TabPanelProps {
 
 function TabPanel(props: TabPanelProps) {
     const { children, value, index, products, category, ...other } = props;
-
     return (
         <div
             role="tabpanel"
@@ -23,78 +23,25 @@ function TabPanel(props: TabPanelProps) {
             {value === index && (
                 <Grid
                     container
-                    justifyContent="center"
-                    minHeight="100vh"
                     spacing={2}
                     paddingTop={'2rem'}
+                    style={{
+                        padding: '2rem',
+                    }}
                 >
                     {products.map((product: any, index: number) => {
-                        if (product.category.name === category) {
-                            return (
-                                <Grid key={index} item>
-                                    <Card
-                                        sx={{
-                                            backgroundColor: 'primary.main',
-                                            display: 'flex',
-                                            direction: 'row',
-                                            padding: '2rem',
-                                            maxWidth: '500px',
-                                            // heigth: '320px',
-                                        }}
-                                    >
-                                        <span>
-                                            <img
-                                                src={product.imageUrl}
-                                                alt={product.name}
-                                                loading="lazy"
-                                                width="160px"
-                                                height="160px"
-                                            />
-                                        </span>
-                                        <Box sx={{ ml: '2rem' }}>
-                                            <Typography
-                                                variant="h5"
-                                                sx={{
-                                                    fontWeight: 'bold',
-                                                    textAlign: 'left',
-                                                    color: 'white',
-                                                    mb: '1rem',
-                                                }}
-                                            >
-                                                {product.name}
-                                            </Typography>
-                                            <Typography
-                                                sx={{
-                                                    textAlign: 'left',
-                                                    color: 'primary.light',
-                                                    fontSize: '1rem',
-                                                }}
-                                            >
-                                                {product.description}
-                                            </Typography>
-                                            <Typography
-                                                sx={{
-                                                    textAlign: 'left',
-                                                    color: 'white',
-                                                    fontSize: '1rem',
-                                                }}
-                                            >
-                                                ${product.price}
-                                            </Typography>
-                                            <Typography
-                                                sx={{
-                                                    textAlign: 'left',
-                                                    color: 'secondary.main',
-                                                    fontSize: '1rem',
-                                                }}
-                                            >
-                                                {product.availability}
-                                            </Typography>
-                                        </Box>
-                                    </Card>
-                                </Grid>
-                            );
-                        }
+                        return product.category.name === category ? (
+                            <Grid
+                                key={`${product.name}-${index}`}
+                                item
+                                xs={12}
+                                sm={6}
+                                md={4}
+                                lg={3}
+                            >
+                                <ItemCard product={product} />
+                            </Grid>
+                        ) : null;
                     })}
                 </Grid>
             )}
@@ -117,7 +64,7 @@ export default function BasicTabs({ products, categories }: any) {
     };
 
     return (
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '100%' }} color="pink">
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs
                     value={value}
@@ -125,13 +72,20 @@ export default function BasicTabs({ products, categories }: any) {
                     aria-label="basic tabs example"
                 >
                     {categories.map((category: any, index: number) => {
-                        const key: string = `${index}-cat`;
-                        return <Tab label={category} {...a11yProps(key)} />;
+                        const key: string = `${category}-${index}`;
+                        return (
+                            <Tab
+                                label={category}
+                                key={key}
+                                {...a11yProps(key)}
+                            />
+                        );
                     })}
                 </Tabs>
             </Box>
             {categories.map((category: any, index: number) => (
                 <TabPanel
+                    key={`${category}-${index}-tab`}
                     value={value}
                     index={index}
                     products={products}
