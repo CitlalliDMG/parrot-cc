@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/parrot-cc/static/js/main.d09e8d5b.js",
+    "static/js/787.bf3b883f.chunk.js": "/parrot-cc/static/js/787.bf3b883f.chunk.js",
+    "static/media/parrot-logo.svg": "/parrot-cc/static/media/parrot-logo.0ab6c118b784af20225b7b8b36aa6eec.svg",
+    "index.html": "/parrot-cc/index.html",
+    "main.d09e8d5b.js.map": "/parrot-cc/static/js/main.d09e8d5b.js.map",
+    "787.bf3b883f.chunk.js.map": "/parrot-cc/static/js/787.bf3b883f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.d09e8d5b.js"
+  ]
+}
