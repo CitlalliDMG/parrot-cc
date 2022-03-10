@@ -102,7 +102,7 @@ Before running this project, make sure you have installed a [Node](https://nodej
 1. Clone the repo
 
 ```sh
-git clone https://github.com/CitlalliDMG/bitso-frontend-challenge.git
+git clone https://github.com/CitlalliDMG/parrot-cc.git
 ```
 
 2. Install dependencies
